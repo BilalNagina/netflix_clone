@@ -152,20 +152,20 @@ docker push bilaln/netflix-clone:v1
    ```
 ### 5. Map hostname
 
-  Find Minikube IP:
+  ### Find Minikube IP:
       ```
         minikube ip
       ```
-  Edit /etc/hosts:
+  ### Edit /etc/hosts:
       ```
         <minikube-ip> netflix.local
       ```
-  Example:
+  ### Example:
   ```
         192.168.43.2 netflix.local
   ```
 
-  Access:
+  ### Access:
   ```
         http://netflix.local
   ```
