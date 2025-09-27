@@ -32,26 +32,27 @@ assets/
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
 ```
-# Build & Run Locally
-
+### Build & Run Locally
+```
 Build image
 docker build -t netflix-clone:latest .
-
-Run container
+```
+### Run container
+```
 docker run -d -p 8080:80 netflix-clone:latest
+```
 # Open http://localhost:8080
 
-# Tag & Push to Docker Hub
-
-Login
+### Tag & Push to Docker Hub
+```Login
 docker login
-
-Tag
+```
+```Tag
 docker tag netflix-clone:latest bilaln/netflix-clone:v1
-
-Push
+```
+```Push
 docker push bilaln/netflix-clone:v1
-
+```
 💡 Add a .dockerignore to skip unnecessary files (e.g. .git, node_modules).
 
 -------------------------------------------------------
@@ -166,24 +167,25 @@ docker push bilaln/netflix-clone:v1
 -------------------------------------------------------   
 ## 🌐 Traffic Flow
 
-With Ingress:
+### With Ingress:
 
   Client → DNS (netflix.local → Minikube IP)
       → Ingress Controller (port 80)
       → Service (nfc-svc)
       → Pod(s) (netflix-clone)
 
-Without Ingress:
+### Without Ingress:
 
   Client → NodeIP:NodePort → Service → Pod
 
 -------------------------------------------------------
 ## 🧹 Cleanup
-
+```
 kubectl delete -f ingress.yaml
 kubectl delete -f service.yaml
 kubectl delete -f deployment.yaml
 minikube stop
+```
 
 
 
