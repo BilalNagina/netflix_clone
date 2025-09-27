@@ -32,24 +32,24 @@ assets/
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
 ```
-Build & Run Locally
+# Build & Run Locally
 
-# Build image
+Build image
 docker build -t netflix-clone:latest .
 
-# Run container
+Run container
 docker run -d -p 8080:80 netflix-clone:latest
 # Open http://localhost:8080
 
-Tag & Push to Docker Hub
+# Tag & Push to Docker Hub
 
-# Login
+Login
 docker login
 
-# Tag
+Tag
 docker tag netflix-clone:latest bilaln/netflix-clone:v1
 
-# Push
+Push
 docker push bilaln/netflix-clone:v1
 
 💡 Add a .dockerignore to skip unnecessary files (e.g. .git, node_modules).
@@ -57,12 +57,14 @@ docker push bilaln/netflix-clone:v1
 -------------------------------------------------------
 ## ☸️ Kubernetes (Minikube)
 
-1. Start cluster & enable ingress
+### 1. Start cluster & enable ingress
+```
    minikube start
    minikube addons enable ingress
+```
 
-2. Deployment (deployment.yaml)
-   
+### 2. Deployment (deployment.yaml)
+ ```
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -82,13 +84,16 @@ docker push bilaln/netflix-clone:v1
             image: bilaln/netflix-clone:v1
             ports:
             - containerPort: 80
+```
 
-    Apply:
+  ### Apply:
+  ```
      kubectl apply -f deployment.yaml
      kubectl get pods -l app=netflix-clone
+  ```
 
-3. Service (service.yaml)
-
+### 3. Service (service.yaml)
+```
       apiVersion: v1
       kind: Service
       metadata:
@@ -100,15 +105,20 @@ docker push bilaln/netflix-clone:v1
         - port: 80
           targetPort: 80
         type: LoadBalancer
-
-      Apply:
+```
+  ### Apply:
+  ```
        kubectl apply -f service.yaml
        kubectl get svc nfc-svc
+  ```
    
-   Get a quick local URL:
+   ### Get a quick local URL:
+   ```
      minikube service nfc-svc --url
-   
-4. Ingress (ingress.yaml)
+   ```
+  
+### 4. Ingress (ingress.yaml)
+```
      apiVersion: networking.k8s.io/v1
      kind: Ingress
       metadata:
@@ -127,24 +137,31 @@ docker push bilaln/netflix-clone:v1
                   name: nfc-svc
                   port:
                     number: 80
-
-     Apply:
+  ```
+   ### Apply:
+   ```
        kubectl apply -f ingress.yaml
        kubectl get ingress
+   ```
+### 5. Map hostname
 
-5. Map hostname
-
-      Find Minikube IP:
+  Find Minikube IP:
+      ```
         minikube ip
-
-      Edit /etc/hosts:
+      ```
+  Edit /etc/hosts:
+      ```
         <minikube-ip> netflix.local
-
-      Example:
+      ```
+  Example:
+  ```
         192.168.43.2 netflix.local
+  ```
 
-      Access:
+  Access:
+  ```
         http://netflix.local
+  ```
 
 -------------------------------------------------------   
 ## 🌐 Traffic Flow
