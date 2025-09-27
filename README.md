@@ -25,7 +25,7 @@ assets/
 - Docker Hub account (for pushing images)
   
 -------------------------------------------------------
-🐳 Docker
+## 🐳 Docker
 
 ### Dockerfile
 ```dockerfile
@@ -55,7 +55,7 @@ docker push bilaln/netflix-clone:v1
 💡 Add a .dockerignore to skip unnecessary files (e.g. .git, node_modules).
 
 -------------------------------------------------------
-☸️ Kubernetes (Minikube)
+## ☸️ Kubernetes (Minikube)
 
 1. Start cluster & enable ingress
    minikube start
@@ -147,7 +147,7 @@ docker push bilaln/netflix-clone:v1
         http://netflix.local
 
 -------------------------------------------------------   
-🌐 Traffic Flow
+## 🌐 Traffic Flow
 
 With Ingress:
 
@@ -161,7 +161,7 @@ Without Ingress:
   Client → NodeIP:NodePort → Service → Pod
 
 -------------------------------------------------------
-🧹 Cleanup
+## 🧹 Cleanup
 
 kubectl delete -f ingress.yaml
 kubectl delete -f service.yaml
