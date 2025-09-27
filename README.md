@@ -44,7 +44,7 @@ docker build -t netflix-clone:latest .
 ```
 docker run -d -p 8080:80 netflix-clone:latest
 ```
-### Open http://localhost:8080
+#### Open http://localhost:8080
 
 ## Tag & Push to Docker Hub
 ### Login
@@ -88,7 +88,7 @@ docker push bilaln/netflix-clone:v1
         spec:
           containers:
           - name: netflix-clone
-            image: bilaln/netflix-clone:v1
+            image: <docker_username>/netflix-clone:v1
             ports:
             - containerPort: 80
 ```
@@ -153,13 +153,13 @@ docker push bilaln/netflix-clone:v1
 ### 5. Map hostname
 
   ### Find Minikube IP:
-      ```
-        minikube ip
-      ```
+  ```
+      minikube ip
+  ```
   ### Edit /etc/hosts:
-      ```
+  ```
         <minikube-ip> netflix.local
-      ```
+  ```
   ### Example:
   ```
         192.168.43.2 netflix.local
