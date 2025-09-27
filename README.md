@@ -93,7 +93,7 @@ docker push bilaln/netflix-clone:v1
             - containerPort: 80
 ```
 
-  ### Apply:
+  #### Apply:
   ```
      kubectl apply -f deployment.yaml
      kubectl get pods -l app=netflix-clone
@@ -113,13 +113,13 @@ docker push bilaln/netflix-clone:v1
           targetPort: 80
         type: LoadBalancer
 ```
-  ### Apply:
+  #### Apply:
   ```
        kubectl apply -f service.yaml
        kubectl get svc nfc-svc
   ```
    
-   ### Get a quick local URL:
+   #### Get a quick local URL:
    ```
      minikube service nfc-svc --url
    ```
@@ -145,7 +145,7 @@ docker push bilaln/netflix-clone:v1
                   port:
                     number: 80
   ```
-   ### Apply:
+   #### Apply:
    ```
        kubectl apply -f ingress.yaml
        kubectl get ingress
