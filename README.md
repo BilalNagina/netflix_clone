@@ -53,11 +53,11 @@ docker login
 ```
 #### Tag
 ```
-docker tag netflix-clone:latest bilaln/netflix-clone:v1
+docker tag netflix-clone:latest <docker_username>/netflix-clone:v1
 ```
 #### Push
 ```
-docker push bilaln/netflix-clone:v1
+docker push <docker_username>/netflix-clone:v1
 ```
 💡 Add a .dockerignore to skip unnecessary files (e.g. .git, node_modules).
 
